@@ -4,5 +4,5 @@ Working with Dr. Andrew Cohen on his flifPress project. You can view his git at:
 #Set Up
 Set up your virtual environment by using virtualenv
 In your virtual env, install the requirements with
-## pip install -r requirements.txt
+##### pip install -r requirements.txt
 
