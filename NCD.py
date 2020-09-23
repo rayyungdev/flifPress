@@ -3,7 +3,6 @@ import os
 from matplotlib import pyplot as py
 import numpy as np
 from PIL import Image
-from gnist import *
 
 def imList(im): 
     if not isinstance(im, list):

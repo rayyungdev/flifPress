@@ -35,10 +35,10 @@ class getmnist:
         if not isinstance(nsamples, int):
             raise TypeError('nsamples requires int')
             
-        Training = [];
-        Stored = [];
+        Training = []
+        Stored = []
         while len(Training) < nsamples *10:
-            i = round(len(self.images)*rand.random())
+            i = round((len(self.images) - 1)*rand.random())
             
             if (self.images[i].all, self.labels[i].all) in Training:
                 #Check if the data set was  already inputed into the dataset
