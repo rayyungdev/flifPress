@@ -1,19 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 from ctypes import *
 import os
 from matplotlib import pyplot as py
 import numpy as np
 from PIL import Image
 from gnist import *
-
-
-# In[2]:
-
 
 def imList(im): 
     if not isinstance(im, list):
@@ -27,13 +17,7 @@ def imList(im):
     else: 
         X=im.copy()
     return X
-
-
-# #### Plan: Focus on a single image. When you can make it work for a single image, branch off and consolidate from there. Current method only imports a single image. FIXED. 
-
-# In[3]:
-
-
+    
 def flifPress(im):
     
     LIB = CDLL ("./lib/libflif.dll") #import libflif library
@@ -83,10 +67,6 @@ def flifPress(im):
     LIB.flif_free_memory(pdest)
     return nBytes
 
-
-# In[4]:
-
-
 def imNCDM(X):
     if not isinstance(X, list):
         raise TypeError('input X requires a list of images')
@@ -107,23 +87,3 @@ def imNCDM(X):
         gExclude.append(flifPress(xExclude))
         
     return ((GX - gx) / np.max(np.asarray(gExclude)))
-
-
-# In[5]:
-
-
-def Regularize(DistanceMat):
-    D = DistanceMat;
-    W, H = np.shape(D)
-    for i in range(W):
-        for j in range(H):
-            D[i,j] = np.max((D[i,j], D[j,i]));
-        D[i,i] = 0;
-    bound = D;
-    bW, bH = np.shape(bound);
-    for i in range(bW):
-        bound[i,i] = 0;
-    a = np.min(bound)
-    degenerate = 1 if a == 0 else 0
-    return D, degenerate
-

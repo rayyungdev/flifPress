@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
 from matplotlib import pyplot as plt
 import idx2numpy
@@ -12,15 +6,7 @@ from NCD import *
 from PIL import Image
 import cv2 as cv2
 import pandas as pd
-
-
-# # gnist is a class that opens ubyte image files and reads them. 
-# 
-# To initialize gnist, you need to input the image and label paths, otherwise it defaults.  
-# Might be able to convert the entire app folder and attach it to this class
-
-# In[2]:
-
+from Cluster import *
 
 class gnist:
     def __init__(self, image_path = None, label_path = None):
