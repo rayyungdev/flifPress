@@ -24,5 +24,5 @@ getmnist().getmnistdistance(Training) - Returns distance matrix for the particul
 
 ### Running from command line
 Open up your python terminal and import gnist
-##### from gnist import *
+##### from apps import *
 Once this is done, you will be able to run any of the gnist or NCD file from the command line. Please note, you will not be able to view images unless you have already set up a default viewer for your console
