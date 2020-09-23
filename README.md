@@ -9,18 +9,18 @@ Note, if you're running from the command line, you will not be able to see the i
 
 ## Functions
 This repository contains two different files:  
-gnist.py -- Main file, which utilizes NCD.py - used to pull training data. Contains one class, gnist.   
+apps.py --Random apps folder that contains auxillary functions utilizing apps.py
 NCD.py -- contains functions pertaining FLIF library as well as other auxillary functions (imList, flifPress, imNCDM, Regularize). This file utilizes the FLIF library. 
-### Usage of gnist.py/ipynb (See jupyter notebook for example usage)
-gnist(image_path, label_path) - class function that pulls image/label data from a ubyte file in your working directory. If no path for the image/label is entered as paramater, it defaults to the hand written digits files found in the working directory's library.
+### Usage of apps.py/ (See jupyter notebook for example usage)
+getmnist(image_path, label_path) - class function that pulls image/label data from a ubyte file in your working directory. If no path for the image/label is entered as paramater, it defaults to the hand written digits files found in the working directory's library.
   
-gnist().show(index) - If you know the particular image's index you want to pull from the file, you may use this function to pull the data pertaining to that image. This function will also show you that particular image.  
+getmnist().show(index) - If you know the particular image's index you want to pull from the file, you may use this function to pull the data pertaining to that image. This function will also show you that particular image.  
   
-gnist().training(nsamples) - Creates a randomized but uniformly distributed training set.   
+getmnist().training(nsamples) - Creates a randomized but uniformly distributed training set.   
   
-gnist().getmnist(target, cardinality) - Creates a training set based off target and cardinality
+getmnist().getmnist(target, cardinality) - Creates a training set based off target and cardinality
   
-gnist().getmnistdistance(Training) - Returns distance matrix for the particular training set.  
+getmnist().getmnistdistance(Training) - Returns distance matrix for the particular training set.  
 
 ### Running from command line
 Open up your python terminal and import gnist
