@@ -2,6 +2,8 @@
 # coding: utf-8
 
 # In[1]:
+
+
 import numpy as np
 from matplotlib import pyplot as plt
 import idx2numpy
@@ -10,7 +12,6 @@ from NCD import *
 from PIL import Image
 import cv2 as cv2
 import pandas as pd
-import multiprocessing as mp
 
 
 # # gnist is a class that opens ubyte image files and reads them. 
@@ -28,6 +29,7 @@ class gnist:
             image_path = './lib/train-images.idx3-ubyte'
             label_path = './lib/train-labels.idx1-ubyte'
         #Import images directly with the idx2numpy library
+        #Using the initialized function to call the image is not recommended as it's the raw image file, prior to preproccessing the image for fliffpress
         (self.images, self.labels) = (idx2numpy.convert_from_file(image_path), idx2numpy.convert_from_file(label_path))
     
     def show(self, index):
@@ -37,7 +39,6 @@ class gnist:
             
         #Binarize the image
         thresh, grayImage = cv2.threshold(self.images[index], 0, 255, cv2.THRESH_BINARY) #work around gray2ind
-        
         image = grayImage; label = self.labels[index];
         plt.figure;
         plt.imshow(image, cmap = 'gray')
@@ -54,7 +55,7 @@ class gnist:
             i = round(len(self.images)*rand.random())
             
             if (self.images[i].all, self.labels[i].all) in Training:
-                #Check if the data set was already inputed into the dataset
+                #Check if the data set was  already inputed into the dataset
                 continue
                 
             if Stored.count(self.labels[i]) >= nsamples:
@@ -71,10 +72,10 @@ class gnist:
             Training.append(nt)
         return np.asarray(Training)
     
-    def getmnist(self, target, cardinality):
-        if not isinstance(target, np.ndarray):
-            raise TypeError('target requires numpy array')
-            
+    def getmnist(self, targ, cardinality):
+        if not (isinstance(targ, np.ndarray) or isinstance(targ, list)):
+            raise TypeError("Input Targ requires list or numpy array")
+        target = np.asarray(targ) if isinstance(targ, list) else targ
         #Import Training Set using gnist().training
         M = self.training(cardinality)
         
@@ -94,6 +95,10 @@ class gnist:
                 if (i == j):
                     continue
                 d[i,j] = imNCDM([Training[i]['im'], Training[j]['im']])
-            
         return Regularize(d)[0]
 
+if __name__ == "__main__":
+    target = [0,1]
+    cardinality = 10
+    TrainSet, idxGT = gnist().getmnist(target, cardinality)
+    print(TrainSet)
