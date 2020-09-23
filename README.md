@@ -1,6 +1,5 @@
 # flifPress
-Working with Dr. Andrew Cohen on his flifPress project. You can view his git at: https://git-bioimage.coe.drexel.edu/opensource/ncd
-
+https://github.com/FLIF-hub/FLIF - Free losless image libary 
 ## Set Up
 Set up your virtual environment by using virtualenv
 In your virtual env, install the requirements with
@@ -21,4 +20,9 @@ gnist().training(nsamples) - Creates a randomized but uniformly distributed trai
   
 gnist().getmnist(target, cardinality) - Creates a training set based off target and cardinality
   
-gnist().getmnistdistance(Training) - Returns distance matrix for the particular training set.   
+gnist().getmnistdistance(Training) - Returns distance matrix for the particular training set.  
+
+### Running from command line
+Open up your python terminal and import gnist
+##### from gnist import *
+Once this is done, you will be able to run any of the gnist or NCD file from the command line. Please note, you will not be able to view images unless you have already set up a default viewer for your console
