@@ -49,7 +49,7 @@ def flifPress(im):
         temp=import_image_GRAY(W, H, pim, W) #Current flif pointer
         fim.append(temp) #Append the flif pointer into the FIM list. 
         
-        encoder_add_image_move= LIB.flif_encoder_add_image_move;
+        encoder_add_image_move= LIB.flif_encoder_add_image_move
         encoder_add_image_move(enc, fim[count]) #Use function to return a pointer
             
     #####For Output##########
@@ -76,13 +76,13 @@ def imNCDM(X):
     GX = flifPress(X); #Total bytes for entire image list. 
     cxi = [flifPress(x) for x in X] #Fliff press individual images in the list
     
-    cxi = np.asarray(cxi);
+    cxi = np.asarray(cxi)
     gx= np.min(cxi)
     
-    gExclude = [];
+    gExclude = []
     
     for ni in range(len(X)):
-        xExclude = X.copy();
+        xExclude = X.copy()
         del xExclude[ni] #Remove the particular image at this index
         gExclude.append(flifPress(xExclude))
         

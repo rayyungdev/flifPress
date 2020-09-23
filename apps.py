@@ -8,7 +8,7 @@ import cv2 as cv2
 import pandas as pd
 from Cluster import *
 
-class gnist:
+class getmnist:
     def __init__(self, image_path = None, label_path = None):
         ###    Set Image/Label Path otherwise it defaults to the handwritten digits file
         if (not image_path and not label_path):
@@ -86,5 +86,5 @@ class gnist:
 if __name__ == "__main__":
     target = [0,1]
     cardinality = 10
-    TrainSet, idxGT = gnist().getmnist(target, cardinality)
+    TrainSet, idxGT = getmnist().getmnist(target, cardinality)
     print(TrainSet)
